@@ -1,3 +1,11 @@
+// In production, silence all debug console logging to protect sensitive data
+if (import.meta.env.PROD) {
+  console.log = () => {};
+  console.info = () => {};
+  console.debug = () => {};
+  console.warn = () => {};
+}
+
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -14,4 +22,4 @@ root.render(
   <ThemeProvider>
     <App />
   </ThemeProvider>
-); 
+);
