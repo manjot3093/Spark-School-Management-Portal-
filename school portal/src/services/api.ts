@@ -1,8 +1,8 @@
 // API Service for School Management Portal
 // This file contains all API endpoints and their implementations
 
-// Use same-origin /api so requests are proxied (no CORS). Set VITE_API_URL to full URL if not using proxy.
-export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || '/api';
+// Default to Render production backend URL.
+export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://spark-school-management-portal.onrender.com/api';
 
 /** Full URL for API path (e.g. /auth/login, /students/documents/x). */
 export const getApiFullUrl = (path: string) => {

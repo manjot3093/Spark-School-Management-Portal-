@@ -13,7 +13,7 @@ class SocketService {
         this.disconnect();
       }
 
-      const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || '/api';
+      const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://spark-school-management-portal.onrender.com/api';
       const WS_BASE_URL = API_BASE_URL.startsWith('http') ? API_BASE_URL.replace(/\/api\/?$/, '') : window.location.origin;
       
       console.log('🔌 School Portal: Connecting to WebSocket:', WS_BASE_URL);

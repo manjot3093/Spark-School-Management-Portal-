@@ -1,4 +1,4 @@
-const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || '/api';
+const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://spark-school-management-portal.onrender.com/api';
 
 interface ImportantDate {
   _id: string;
