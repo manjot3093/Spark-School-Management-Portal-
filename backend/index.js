@@ -12,7 +12,7 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 
 // Load environment variables
-dotenv.config({ path: './config.env' });
+if (fs.existsSync(path.join(__dirname, 'config.env'))) { dotenv.config({ path: path.join(__dirname, 'config.env') }); } else { dotenv.config(); }
 
 // Import routes
 const authRoutes = require('./routes/auth');
