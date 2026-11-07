@@ -45,6 +45,7 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
 
   try {
     const response = await fetch(url, defaultOptions);
+    const contentType = response.headers.get('content-type') || '';
 
     if (!response.ok) {
       if (response.status === 401) {
@@ -56,19 +57,25 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
 
       // Try to get detailed error information
       let errorMessage = `API request failed: ${response.status} ${response.statusText}`;
-      try {
-        const errorData = await response.json();
-        console.error('Detailed API error:', errorData);
-        if (errorData.details && Array.isArray(errorData.details)) {
-          errorMessage = `Validation failed: ${errorData.details.map((d: any) => d.msg).join(', ')}`;
-        } else if (errorData.error) {
-          errorMessage = errorData.error;
+      if (contentType.includes('application/json')) {
+        try {
+          const errorData = await response.json();
+          console.error('Detailed API error:', errorData);
+          if (errorData.details && Array.isArray(errorData.details)) {
+            errorMessage = `Validation failed: ${errorData.details.map((d: any) => d.msg).join(', ')}`;
+          } else if (errorData.error) {
+            errorMessage = errorData.error;
+          }
+        } catch (parseError) {
+          console.error('Could not parse error response:', parseError);
         }
-      } catch (parseError) {
-        console.error('Could not parse error response:', parseError);
       }
 
       throw new Error(errorMessage);
+    }
+
+    if (!contentType.includes('application/json')) {
+      throw new Error(`Backend server returned unexpected non-JSON response from ${url}. Ensure the backend is running.`);
     }
 
     return await response.json();

@@ -137,7 +137,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               body: JSON.stringify({ idToken })
             });
 
-            if (response.ok) {
+            const contentType = response.headers.get('content-type') || '';
+            if (response.ok && contentType.includes('application/json')) {
               const data = await response.json();
               const { user, token } = data.data;
               
@@ -225,6 +226,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ idToken })
       });
+
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        dispatch({ type: 'LOGIN_FAILURE' });
+        throw new Error(`Backend server is not reachable at ${API_BASE_URL}. Ensure your backend server is deployed and running on your VM.`);
+      }
 
       if (response.ok) {
         const data = await response.json();
