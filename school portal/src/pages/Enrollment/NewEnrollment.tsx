@@ -190,18 +190,18 @@ const NewEnrollment: React.FC = () => {
   };
 
   return (
-    <main className="max-w-7xl mx-auto space-y-6 pb-10">
+    <main className="max-w-7xl mx-auto space-y-4 sm:space-y-6 pb-10">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-[28px] bg-[#20386b] px-6 py-8 text-white shadow-[0_20px_50px_#243d711f] md:px-9 md:py-10">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-[28px] bg-[#20386b] p-5 sm:p-7 md:p-9 text-white shadow-[0_20px_50px_#243d711f]">
         <div className="pointer-events-none absolute -right-12 -top-16 h-56 w-56 rounded-full border-[34px] border-[#f57a3224]" aria-hidden="true" />
-        <div className="relative mb-5 text-xs font-bold uppercase tracking-[.18em] text-[#ffad72]">Student journey / registration</div>
-        <div className="relative flex items-center gap-4">
-          <div className="rounded-2xl bg-[#ffffff20] p-3 ring-1 ring-white/20">
-            <UserPlus className="h-7 w-7 text-[#ffad72]" />
+        <div className="relative mb-3 sm:mb-5 text-[11px] sm:text-xs font-bold uppercase tracking-[.18em] text-[#ffad72]">Student journey / registration</div>
+        <div className="relative flex items-center gap-3.5 sm:gap-4 min-w-0">
+          <div className="shrink-0 rounded-xl sm:rounded-2xl bg-[#ffffff20] p-2.5 sm:p-3 ring-1 ring-white/20">
+            <UserPlus className="h-6 w-6 sm:h-7 sm:w-7 text-[#ffad72]" />
           </div>
-          <div>
-            <h1 className="font-['Manrope'] text-3xl font-extrabold tracking-[-.05em] md:text-[40px]">New student enrollment</h1>
-            <p className="mt-1 text-sm text-[#d9e3f5]">Add the student, family and school details in six guided steps.</p>
+          <div className="min-w-0 flex-1">
+            <h1 className="font-['Manrope'] text-2xl sm:text-3xl md:text-[38px] font-extrabold tracking-[-.05em] leading-tight break-words">New student enrollment</h1>
+            <p className="mt-1 text-xs sm:text-sm text-[#d9e3f5] leading-relaxed">Add the student, family and school details in six guided steps.</p>
           </div>
         </div>
       </div>

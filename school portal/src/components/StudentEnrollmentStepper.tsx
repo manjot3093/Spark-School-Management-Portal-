@@ -896,35 +896,77 @@ const StudentEnrollmentStepper: React.FC<StudentEnrollmentStepperProps> = ({ onS
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-3.5 sm:p-6 md:p-8">
       {/* Stepper Header */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center mb-4">
-          {steps.map((step) => (
-            <div key={step.number} className="flex flex-col items-center flex-1">
-              <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-semibold mb-2 transition-all ${
-                  currentStep >= step.number
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 text-gray-700'
-                }`}
-              >
-                {currentStep > step.number ? '✓' : step.number}
-              </div>
-              <span className="text-xs text-gray-600 text-center">{step.title}</span>
-            </div>
-          ))}
+      <div className="mb-6 sm:mb-8">
+        {/* Mobile active step pill banner */}
+        <div className="sm:hidden mb-3.5 flex items-center justify-between bg-blue-50/70 border border-blue-100 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-0.5 rounded-full bg-blue-600 text-white font-bold text-[11px]">
+              Step {currentStep}/6
+            </span>
+            <span className="text-gray-900 font-bold text-xs truncate max-w-[180px]">
+              {steps[currentStep - 1].title}
+            </span>
+          </div>
+          <span className="text-[11px] font-semibold text-blue-700">
+            {Math.round(((currentStep) / steps.length) * 100)}%
+          </span>
         </div>
-        <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+
+        {/* Stepper circles row */}
+        <div className="overflow-x-auto no-scrollbar pb-1 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0">
+          <div className="flex justify-between items-start min-w-[320px] sm:min-w-0 gap-1 sm:gap-2">
+            {steps.map((step) => {
+              const isActive = currentStep === step.number;
+              const isPassed = currentStep > step.number;
+              return (
+                <button
+                  type="button"
+                  key={step.number}
+                  onClick={() => {
+                    if (step.number < currentStep) setCurrentStep(step.number);
+                  }}
+                  className={`flex flex-col items-center flex-1 min-w-[48px] sm:min-w-0 focus:outline-none transition-opacity ${
+                    step.number < currentStep ? 'cursor-pointer hover:opacity-85' : 'cursor-default'
+                  }`}
+                  aria-label={`Step ${step.number}: ${step.title}`}
+                >
+                  <div
+                    className={`w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-xs sm:text-sm md:text-base font-bold mb-1 sm:mb-2 transition-all ${
+                      isPassed
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : isActive
+                        ? 'bg-blue-600 text-white ring-2 sm:ring-4 ring-blue-100 shadow-md scale-105'
+                        : 'bg-gray-100 text-gray-500 border border-gray-200'
+                    }`}
+                  >
+                    {isPassed ? '✓' : step.number}
+                  </div>
+                  <span
+                    className={`text-[9.5px] sm:text-xs text-center font-medium leading-tight max-w-[55px] sm:max-w-none line-clamp-2 sm:line-clamp-none ${
+                      isActive ? 'text-blue-700 font-bold' : isPassed ? 'text-gray-700' : 'text-gray-400'
+                    }`}
+                  >
+                    {step.title}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="h-1 sm:h-1.5 bg-gray-100 rounded-full overflow-hidden mt-2.5 sm:mt-4">
           <div
-            className="h-full bg-blue-500 transition-all"
+            className="h-full bg-blue-600 transition-all duration-300 rounded-full"
             style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
           />
         </div>
       </div>
 
       {/* Step Content */}
-      <div className="min-h-96 mb-8">
+      <div className="min-h-80 sm:min-h-96 mb-6 sm:mb-8">
         {currentStep === 1 && renderStep1()}
         {currentStep === 2 && renderStep2()}
         {currentStep === 3 && renderStep3()}
@@ -934,13 +976,13 @@ const StudentEnrollmentStepper: React.FC<StudentEnrollmentStepperProps> = ({ onS
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+      <div className="flex flex-col-reverse sm:flex-row sm:justify-between items-stretch sm:items-center gap-2.5 sm:gap-4 pt-4 sm:pt-6 border-t border-gray-200">
         <button
           onClick={handlePrevious}
           disabled={currentStep === 1}
-          className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+          className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 rounded-lg text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 text-sm font-medium transition-colors"
         >
-          <ChevronLeft size={20} />
+          <ChevronLeft size={18} />
           Previous
         </button>
 
@@ -948,7 +990,7 @@ const StudentEnrollmentStepper: React.FC<StudentEnrollmentStepperProps> = ({ onS
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="flex items-center gap-2 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors shadow-sm"
+            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold transition-colors shadow-sm"
           >
             {loading && (
               <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -958,10 +1000,10 @@ const StudentEnrollmentStepper: React.FC<StudentEnrollmentStepperProps> = ({ onS
         ) : (
           <button
             onClick={handleNext}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-medium"
+            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-semibold shadow-sm transition-colors"
           >
             Next
-            <ChevronRight size={20} />
+            <ChevronRight size={18} />
           </button>
         )}
       </div>

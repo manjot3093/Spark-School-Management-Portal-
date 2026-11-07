@@ -787,24 +787,24 @@ const Classes: React.FC = () => {
 
       {/* Manage Classes Section */}
       <div className="space-y-4">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h3 className="text-lg font-semibold text-gray-900">Manage Classes</h3>
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => exportClassData('csv')}
-              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center space-x-1 text-sm"
+              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center justify-center space-x-1 text-sm whitespace-nowrap shadow-xs"
             >
               <span>Export CSV</span>
             </button>
             <button
               onClick={() => exportClassData('json')}
-              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center space-x-1 text-sm"
+              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center justify-center space-x-1 text-sm whitespace-nowrap shadow-xs"
             >
               <span>Export JSON</span>
             </button>
             <button
               onClick={() => setShowAddClassModal(true)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center space-x-2"
+              className="bg-blue-600 text-white px-3.5 py-2 rounded-md hover:bg-blue-700 flex items-center justify-center space-x-1.5 text-sm font-medium whitespace-nowrap shadow-sm"
             >
               <Plus className="h-4 w-4" />
               <span>Add New Class</span>
@@ -812,7 +812,7 @@ const Classes: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-lg shadow-md p-3.5 sm:p-5 md:p-6">
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead>
@@ -943,18 +943,18 @@ const Classes: React.FC = () => {
 
   const renderManageClasses = () => (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-gray-900">Manage Classes</h3>
         <button
           onClick={() => setShowAddClassModal(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center space-x-2"
+          className="bg-blue-600 text-white px-3.5 py-2 rounded-md hover:bg-blue-700 flex items-center justify-center space-x-1.5 text-sm font-medium whitespace-nowrap shadow-sm"
         >
           <Plus className="h-4 w-4" />
           <span>Add New Class</span>
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white rounded-lg shadow-md p-3.5 sm:p-5 md:p-6">
         <div className="overflow-x-auto">
           <table className="min-w-full">
             <thead>
@@ -1109,25 +1109,25 @@ const Classes: React.FC = () => {
     <div className="space-y-6">
       {/* Teacher Assignments Section */}
       <div className="space-y-4">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h3 className="text-lg font-semibold text-gray-900">Teacher Assignments</h3>
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => exportTeacherAssignmentData('csv')}
-              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center space-x-1 text-sm"
+              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center justify-center space-x-1 text-sm whitespace-nowrap shadow-xs"
             >
               <span>Export CSV</span>
             </button>
             <button
               onClick={() => exportTeacherAssignmentData('json')}
-              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center space-x-1 text-sm"
+              className="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 flex items-center justify-center space-x-1 text-sm whitespace-nowrap shadow-xs"
             >
               <span>Export JSON</span>
             </button>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md">
+        <div className="bg-white rounded-lg shadow-md p-3.5 sm:p-5 md:p-6">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -1234,11 +1234,11 @@ const Classes: React.FC = () => {
 
       {/* Subject Allocation Section */}
       <div className="space-y-4">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h3 className="text-lg font-semibold text-gray-900">Subject Allocation</h3>
           <button
             onClick={() => setShowAddSubjectModal(true)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center space-x-2"
+            className="bg-blue-600 text-white px-3.5 py-2 rounded-md hover:bg-blue-700 flex items-center justify-center space-x-1.5 text-sm font-medium whitespace-nowrap shadow-sm"
           >
             <Plus className="h-4 w-4" />
             <span>Add Subject</span>
@@ -1428,19 +1428,19 @@ const Classes: React.FC = () => {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
       
 
       {/* Tabs */}
       <div className="bg-white rounded-lg shadow-md">
         <div className="border-b border-gray-200">
-          <nav className="flex space-x-8 px-6 overflow-x-auto" aria-label="Tabs">
+          <nav className="flex space-x-4 sm:space-x-8 px-3.5 sm:px-6 overflow-x-auto" aria-label="Tabs">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${activeTab === tab.id
+                className={`py-3.5 sm:py-4 px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${activeTab === tab.id
                   ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
@@ -1450,15 +1450,15 @@ const Classes: React.FC = () => {
             ))}
           </nav>
         </div>
-        <div className="p-6">
+        <div className="p-3.5 sm:p-5 md:p-6">
           {renderTabContent()}
         </div>
       </div>
 
       {/* Add Class Modal */}
       {showAddClassModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="relative mx-auto my-auto p-4 sm:p-6 border w-[calc(100%-1rem)] max-w-md shadow-2xl rounded-xl bg-white">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Add New Class</h3>
               <form onSubmit={handleAddClassSubmit} className="space-y-4">
@@ -1569,8 +1569,8 @@ const Classes: React.FC = () => {
 
       {/* Edit Class Modal */}
       {showEditClassModal && selectedClass && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="relative mx-auto my-auto p-4 sm:p-6 border w-[calc(100%-1rem)] max-w-md shadow-2xl rounded-xl bg-white">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Edit Class</h3>
               <form onSubmit={handleEditClass} className="space-y-4">
@@ -1791,8 +1791,8 @@ const Classes: React.FC = () => {
 
       {/* Add Subject Modal */}
       {showAddSubjectModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="relative mx-auto my-auto p-4 sm:p-6 border w-[calc(100%-1rem)] max-w-md shadow-2xl rounded-xl bg-white">
             <div className="mt-3">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-medium text-gray-900">

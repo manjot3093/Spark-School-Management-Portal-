@@ -71,7 +71,7 @@ button { cursor: pointer; }
 .login-panel button[type="submit"] { background:#245a82; box-shadow:0 8px 18px rgba(36,90,130,.18); }
 .login-panel button[type="submit"]:hover { background:#194e74; }
 @media (max-width:1023px) { .portal-sidebar { position:fixed; inset:0 auto 0 0; transform:translateX(-100%); transition:transform .25s ease; width:min(82vw,290px); box-shadow:16px 0 45px rgba(18,47,65,.14); } .portal-sidebar-open { transform:translateX(0); } .portal-sidebar-overlay { display:block; position:fixed; inset:0; border:0; background:rgba(19,43,58,.42); z-index:40; } .portal-close-button,.portal-menu-button { display:inline-flex; align-items:center; justify-content:center; } }
-@media (max-width:640px) { .portal-header { min-height:72px; padding:12px 16px; } .portal-main { padding:18px 14px 32px; } .portal-page-heading span { display:none; } .portal-page-heading h1 { font-size:17px; max-width:55vw; } .portal-school-pill,.portal-user-button .hidden { display:none; } .portal-user-button { gap:3px; } .portal-header-end { gap:2px; } .login-page::before { display:none; } }
+@media (max-width:640px) { .portal-header { min-height:56px; padding:8px 12px; } .portal-main { padding:12px 10px 48px; } .portal-page-heading span { display:none; } .portal-page-heading h1 { font-size:16px; max-width:60vw; } .portal-school-pill,.portal-user-button .hidden { display:none; } .portal-user-button { gap:3px; } .portal-header-end { gap:2px; } .login-page::before { display:none; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
 
 code {
@@ -245,7 +245,7 @@ html[data-theme="dark"] .login-celestial-widget { filter:drop-shadow(0 0 26px rg
 .portal-main nav[aria-label="Tabs"] { gap:6px; padding:6px 10px; }
 .portal-main nav[aria-label="Tabs"] button { padding:6px 12px; border-radius:6px; font-size:12px; }
 .portal-main nav[aria-label="Tabs"] button.border-blue-500 { background:#fff0e5; border-color:transparent; color:#a84815; }
-@media(max-width:640px) { .workspace-intro { min-height:160px; padding:25px; } .workspace-intro-art { width:65px; height:65px; } .portal-main > .p-6 { padding:0; } }
+@media(max-width:640px) { .workspace-intro { min-height:160px; padding:16px; } .workspace-intro-art { width:52px; height:52px; } .portal-main .p-6 { padding:14px; } .portal-main .px-6 { padding-left:14px; padding-right:14px; } .portal-main .py-6 { padding-top:14px; padding-bottom:14px; } .portal-main .p-8 { padding:16px; } .portal-main .px-8 { padding-left:16px; padding-right:16px; } .portal-main .py-8 { padding-top:16px; padding-bottom:16px; } }
 /* Common module surfaces and controls */
 .portal-main h1,.portal-main h2,.portal-main h3 { font-family:'Manrope',sans-serif; letter-spacing:-.035em; }
 .portal-main .rounded-lg.bg-white,.portal-main .bg-white.rounded-lg { border-radius:20px; }
@@ -276,9 +276,13 @@ html[data-theme="dark"] .login-celestial-widget { filter:drop-shadow(0 0 26px rg
 .portal-main button:disabled { cursor:not-allowed; transform:none; }
 .portal-main input:disabled,.portal-main select:disabled,.portal-main textarea:disabled { background:#f0f3f8; color:#7b879c; cursor:not-allowed; }
 .portal-main input[aria-invalid="true"],.portal-main textarea[aria-invalid="true"],.portal-main select[aria-invalid="true"] { border-color:#c44c32; background:#fff8f5; }
-.portal-main .overflow-x-auto { scrollbar-width:thin; scrollbar-color:#c1cde1 transparent; }
-.portal-main thead th { background:#f5f7fc; padding:7px 10px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
-.portal-main tbody td { border-color:#edf0f6; padding:6px 10px; font-size:12.5px; }
+.portal-main .overflow-x-auto { scrollbar-width:thin; scrollbar-color:#c1cde1 transparent; -webkit-overflow-scrolling:touch; max-width:100%; }
+.portal-main .overflow-x-auto > table { min-width:620px; }
+.portal-main thead th { background:#f5f7fc; padding:7px 10px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; white-space:nowrap; }
+.portal-main tbody td { border-color:#edf0f6; padding:6px 10px; font-size:12.5px; white-space:nowrap; }
+.portal-main thead th.whitespace-normal, .portal-main tbody td.whitespace-normal { white-space:normal; }
+.no-scrollbar::-webkit-scrollbar { display:none; }
+.no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
 @keyframes spark-dialog-in { from { opacity:0; transform:translateY(10px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
 @media(max-width:640px) { .spark-dialog > div { padding:20px; } .portal-main input,.portal-main select,.portal-main textarea { font-size:16px; } }
 @media(prefers-reduced-motion:reduce) { .portal-page-enter,.spark-dialog { animation:none; } }

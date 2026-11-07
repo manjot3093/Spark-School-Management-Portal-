@@ -85,24 +85,24 @@ export const Pagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <div className={`flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 bg-white border-t border-gray-200 ${className}`}>
+    <div className={`flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 bg-white border-t border-gray-200 ${className}`}>
       {/* Item info and page size dropdown */}
-      <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-600">
+      <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs text-gray-600">
         <span>
           Showing <span className="font-semibold text-gray-800">{startItem}</span> to{' '}
           <span className="font-semibold text-gray-800">{endItem}</span> of{' '}
           <span className="font-semibold text-gray-800">{totalItems}</span> results
         </span>
         {onPageSizeChange && pageSizeOptions && pageSizeOptions.length > 0 && (
-          <div className="flex items-center gap-1.5 ml-2">
-            <span className="text-xs text-gray-500">Per page:</span>
+          <div className="flex items-center gap-1.5 sm:ml-2">
+            <span className="text-[11px] text-gray-500">Per page:</span>
             <select
               value={pageSize}
               onChange={(e) => {
                 onPageSizeChange(Number(e.target.value));
                 onPageChange(1);
               }}
-              className="text-xs bg-gray-50 border border-gray-300 rounded px-2 py-1 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              className="text-xs bg-gray-50 border border-gray-300 rounded px-1.5 py-0.5 focus:ring-1 focus:ring-blue-500 focus:outline-none"
             >
               {pageSizeOptions.map((opt) => (
                 <option key={opt} value={opt}>
@@ -115,7 +115,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       {/* Page controls */}
-      <div className="flex items-center space-x-1">
+      <div className="flex items-center justify-center flex-wrap gap-1">
         {/* First Page */}
         <button
           type="button"

@@ -2108,7 +2108,7 @@ const Students: React.FC = () => {
   return (
     <main className="mx-auto max-w-[1500px] space-y-2.5 pb-4">
       {/* Top Action Row */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-2">
           <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">Total Enrolled:</span>
           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
@@ -2118,7 +2118,7 @@ const Students: React.FC = () => {
         <button
           type="button"
           onClick={() => setShowAddStudentModal(true)}
-          className="h-9 px-4 bg-[#245a82] hover:bg-[#1a4463] text-white rounded-lg text-sm font-semibold flex items-center space-x-1.5 shadow-sm transition-colors"
+          className="h-9 px-4 bg-[#245a82] hover:bg-[#1a4463] text-white rounded-lg text-sm font-semibold flex items-center justify-center space-x-1.5 shadow-sm transition-colors w-full sm:w-auto"
         >
           <UserPlus className="h-4 w-4" />
           <span>Quick Enroll Student</span>
@@ -2152,8 +2152,8 @@ const Students: React.FC = () => {
 
       {/* Enhanced Quick Enroll Student Modal with Multi-Field Validation & Loading State */}
       {showAddStudentModal && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
-          <div className="relative mx-auto p-6 border w-full max-w-2xl shadow-2xl rounded-xl bg-white max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="relative mx-auto p-4 sm:p-6 border w-[calc(100%-1rem)] sm:w-full max-w-2xl shadow-2xl rounded-xl bg-white max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-gray-200 mb-4">
               <div>
                 <h3 className="text-xl font-bold text-gray-900">Enroll New Student</h3>
