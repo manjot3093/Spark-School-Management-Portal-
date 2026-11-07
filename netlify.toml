@@ -1,0 +1,11 @@
+# Netlify configuration for Spark School Management Portal
+
+[build]
+  base = "school portal"
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
