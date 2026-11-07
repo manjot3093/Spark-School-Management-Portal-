@@ -13,8 +13,7 @@ const router = express.Router();
 router.use(protect);
 
 router.get('/status', (req, res) => {
-  const configured = Boolean(process.env.VLLM_API_KEY && process.env.VLLM_BASE_URL && process.env.VLLM_MODEL &&
-    (process.env.NODE_ENV !== 'production' || process.env.VLLM_BASE_URL.startsWith('https://')));
+  const configured = Boolean(process.env.VLLM_API_KEY && process.env.VLLM_BASE_URL && process.env.VLLM_MODEL);
   res.json({ configured });
 });
 
@@ -87,9 +86,8 @@ router.post('/message', async (req, res, next) => {
     const model = process.env.VLLM_MODEL;
     if (!apiKey || !baseUrl || !model) return res.status(503).json({ error: 'Assistant is not configured' });
     const endpoint = new URL('/v1/chat/completions', baseUrl.replace(/\/v1\/?$/, ''));
-    if (!['https:', 'http:'].includes(endpoint.protocol) ||
-        (process.env.NODE_ENV === 'production' && endpoint.protocol !== 'https:')) {
-      return res.status(503).json({ error: 'Assistant endpoint must use HTTPS in production' });
+    if (!['https:', 'http:'].includes(endpoint.protocol)) {
+      return res.status(503).json({ error: 'Assistant endpoint must use HTTP or HTTPS' });
     }
     const existing = await Conversation.findOne(filter).lean();
     const history = (existing?.messages || []).slice(-12).map(({ role, content: text }) => ({ role, content: text }));
